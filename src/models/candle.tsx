@@ -1,3 +1,4 @@
+import { asset } from "../utils/asset";
 import { useFrame, useLoader } from "@react-three/fiber";
 import type { ThreeElements } from "@react-three/fiber";
 import { useEffect, useMemo, useRef } from "react";
@@ -83,7 +84,7 @@ const fragmentShader = `
 `;
 
 export function Candle({ children, isLit = true, ...groupProps }: CandleProps) {
-  const gltf = useLoader(GLTFLoader, "/candle.glb");
+  const gltf = useLoader(GLTFLoader, asset("/candle.glb"));
   const candleScene = useMemo<Group | null>(() => gltf.scene?.clone(true) ?? null, [gltf.scene]);
   const lightRef = useRef<PointLight>(null);
   const flameMeshRef = useRef<Mesh>(null);
