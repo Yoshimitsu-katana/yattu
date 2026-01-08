@@ -1,3 +1,4 @@
+import { asset } from "../utils/asset";
 import { useLoader } from "@react-three/fiber";
 import type { ThreeElements } from "@react-three/fiber";
 import { useEffect, useMemo } from "react";
@@ -30,7 +31,7 @@ export function PictureFrame({
   ...groupProps
 }: PictureFrameProps) {
   const { gl } = useThree();
-  const gltf = useLoader(GLTFLoader, "/picture_frame.glb");
+  const gltf = useLoader(GLTFLoader, asset("/picture_frame.glb"));
   const pictureTexture = useTexture(image);
 
   pictureTexture.colorSpace = SRGBColorSpace;
